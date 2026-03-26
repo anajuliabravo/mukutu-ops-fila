@@ -1,0 +1,9 @@
+{
+  "name": "mukutu-ops-fila",
+  "version": "1.2.0",
+  "description": "Ferramenta Web Single File MVP + Vercel Functions para Fila de Operações Mukutu",
+  "main": "api/getQueue.js",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.8"
+  }
+}
