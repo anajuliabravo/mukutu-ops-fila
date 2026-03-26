@@ -7,14 +7,14 @@ if (!supabaseUrl || !supabaseKey) {
   console.warn("Aviso: Chaves do Supabase não configuradas no ambiente.");
 }
 
-const supabase = createClient(supabaseUrl || 'https://fake-url.supabase.co', supabaseKey || 'fake-key');
+const supabase = createClient(supabaseUrl || '', supabaseKey || '');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method === 'GET') {
     const { data, error } = await supabase
       .from('projetos')
       .select('*')
-      .order('created_at', { ascending: true }); // Ordenação temporal inicial
+      .order('created_at', { ascending: true });
       
     if (error) {
       return res.status(500).json({ error: error.message });
@@ -24,4 +24,4 @@ export default async function handler(req, res) {
   }
   
   return res.status(405).json({ message: 'Método não permitido.' });
-}
+};
